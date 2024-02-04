@@ -42,42 +42,44 @@ const Page = async ({ params, searchParams }: URLProps) => {
             className="rounded-full object-cover"
           />
 
-          <div className="mt-3">
-            <h2 className="h2-bold text-dark100_light900">
-              {userInfo.user.name}
-            </h2>
-            <p className="paragraph-regular text-dark200_light800">
-              @{userInfo.user.username}
-            </p>
-
-            <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
-              {userInfo.user.portfolioWebsite && (
-                <ProfileLink
-                  imgUrl="/assets/icons/link.svg"
-                  href={userInfo.user.portfolioWebsite}
-                  title="Portfolio"
-                />
-              )}
-
-              {userInfo.user.location && (
-                <ProfileLink
-                  imgUrl="/assets/icons/location.svg"
-                  title={userInfo.user.location}
-                />
-              )}
-
-              <ProfileLink
-                imgUrl="/assets/icons/calendar.svg"
-                title={getFormattedJoinedDate(userInfo.user.joinedAt)}
-              />
-            </div>
-
-            {userInfo.user.bio && (
-              <p className="paragraph-regular text-dark400_light800 mt-8">
-                {userInfo.user.bio}
+          {userInfo.user && (
+            <div className="mt-3">
+              <h2 className="h2-bold text-dark100_light900">
+                {userInfo.user.name}
+              </h2>
+              <p className="paragraph-regular text-dark200_light800">
+                @{userInfo.user.username}
               </p>
-            )}
-          </div>
+
+              <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
+                {userInfo.user.portfolioWebsite && (
+                  <ProfileLink
+                    imgUrl="/assets/icons/link.svg"
+                    href={userInfo.user.portfolioWebsite}
+                    title="Portfolio"
+                  />
+                )}
+
+                {userInfo.user.location && (
+                  <ProfileLink
+                    imgUrl="/assets/icons/location.svg"
+                    title={userInfo.user.location}
+                  />
+                )}
+
+                <ProfileLink
+                  imgUrl="/assets/icons/calendar.svg"
+                  title={getFormattedJoinedDate(userInfo.user.joinedAt)}
+                />
+              </div>
+
+              {userInfo.user.bio && (
+                <p className="paragraph-regular text-dark400_light800 mt-8">
+                  {userInfo.user.bio}
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="flex justify-end max-sm:mb-5 max-sm:w-full sm:mt-3">
